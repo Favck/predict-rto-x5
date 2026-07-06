@@ -69,9 +69,8 @@ The goal was to predict the next month's RTO for each store using historical sal
 
 | Model | MAPE | R² |
 |-------|------|----|
-| RandomForest (baseline) | 13.47% | 0.861 |
-| GradientBoosting | 0.34% | 0.958 |
-| **CatBoost (final)** | **0.27%** | **0.969** |
+| RandomForest (baseline) | 13.47% | 
+| **CatBoost (final)** | **5.24%** | 
 
 ---
 
