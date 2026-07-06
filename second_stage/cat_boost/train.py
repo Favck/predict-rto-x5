@@ -35,7 +35,7 @@ pred = model.predict(X_test)
 Y_test = np.expm1(Y_test)
 pred = np.expm1(pred)
 
-print("R2:", model.score(X_test,Y_test))
+
 print("MAPE:", mean_absolute_percentage_error(Y_test, pred))
 
 model.save_model("model_35.cbm")
