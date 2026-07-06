@@ -6,7 +6,7 @@ from catboost import CatBoostRegressor, EFeaturesSelectionAlgorithm, Pool
 from sklearn.metrics import mean_absolute_percentage_error
 import pandas as pd
 import joblib
-
+import numpy as np
 
 data = pd.read_csv("second_stage/data/EditedData_final.csv", index_col=0)
 
@@ -70,11 +70,13 @@ for i in [18, 22, 14, len(feature_names)]:
     model_final.save_model(f"model_{i}.cbm")
 
     preds = model_final.predict(X_test_sel)
-    from sklearn.metrics import mean_absolute_percentage_error, r2_score
+
+    preds_real = np.expm1(preds)
+    Y_test_real = np.expm1(Y_test)
+    
     print(f"\n=== i={i} ===")
     print(f"MAPE: {mean_absolute_percentage_error(Y_test, preds):.6f}")
-    print(f"R2:   {r2_score(Y_test, preds):.6f}")
-    print(f"R2: {model.score(X_test, Y_test):.6f}")
+
     
 
 
